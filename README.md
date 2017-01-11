@@ -13,6 +13,9 @@ When using this you should change the package.json to match your project, though
 3. Now run the command `npm install` in the same directory as the package.json file to install the gulp dependencies. Run the command with the `--verbose` option to see a bunch of text fly by super fast and feel like a 90s movie hacker.
 4. Now you're free to go! Check out the next section to see what stuff you can do with the basic pipeline.
 
+## Basic use flow
+Simply use the `gulp watch` command and begin working within the dev directory. A browser window will open and refresh as you save changes to your files. As always, use `Ctrl + C` to halt the current job.
+
 ## What's in the pipeline?
 The gulpfile is preconfigured with a few common things that I find myself using regularly. Below is a list of the jobs that can be run as `gulp <command>`:
 
@@ -40,7 +43,3 @@ The pipeline will uglify, combine and attach a pseudorandom version number to th
 
 ### Version Number
 The version number is a pseudorandom string, and is not used for actual versioning, it simply makes getting around browser caching a bit easier.
-
-
-## Basic use flow
-Simply use the `gulp watch` command and begin working within the dev directory. A browser window will open and refresh as you save changes to your files. As always, use `Ctrl + C` to halt the current job.
