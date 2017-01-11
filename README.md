@@ -15,12 +15,7 @@ When using this you should change the package.json to match your project, though
 
 ## What's in the pipeline?
 The gulpfile is preconfigured with a few common things that I find myself using regularly. Below is a list of the jobs that can be run as `gulp <command>`:
-Command | What does it do?
-------- | ----------------
-`gulp`  | Runs the default task, which runs the `clean`, `uglify` and `copy-images` tasks
-------- | -------------------------------------------------------------------------------
-`clean` | Deletes the 'dist' directory (if it exists)
-------- | -------------------------------------------------------------------------------
+| Command | What does it do? |
 
 
 
