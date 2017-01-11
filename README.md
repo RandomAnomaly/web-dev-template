@@ -15,8 +15,32 @@ When using this you should change the package.json to match your project, though
 
 ## What's in the pipeline?
 The gulpfile is preconfigured with a few common things that I find myself using regularly. Below is a list of the jobs that can be run as `gulp <command>`:
-| Command | What does it do? |
+
+Command | What does it do?
+--- | ---
+`gulp` | Runs the default task, which runs the `clean`, `uglify` and `copy-images` tasks.
+`gulp clean` | Deletes the 'dist' directory (if it exists).
+`gulp copy-images` | Copies all jpg images from the dev/bin/ directory to dist/bin/
+`gulp jshint` | Runs jshint on the javascript files in dev/scripts/ and displays them using the stylish reporter.
+`gulp uglify` | Minifies the css and javascript files referenced in between the build tags in the html files. Combines these files together, gives them a versioning number and put them in the dist folder.
+`gulp watch` | Runs the `browser-sync` task, then watches for changes in the html, javascript and css files in your dev folder. When they change, triggers another running of the `uglify` task. Watches for changes of image files and kicks off the `copy-images` task.
+`gulp browser-sync` | Runs browser-sync, which serves up your HTML files on localhost, and automatically refreshes the page when the files change. The browser-sync job is serving up the version of your files as they exist in dist/, so they will be uglified. For this reason I'd recommend changing the gulpfile to point to the dev version of the files if you use in-browser debugging a lot, or do not use the build tags for these files.
+
+### Build Tags
+In your html files, if you put your css link tags in between `build:css` comment tags like this:
+`<!-- build:css styles/main.css -->
+<link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="styles/styles2.css">
+<!-- endbuild -->`
+The pipeline will uglify, combine and attach a pseudorandom version number to the files when outputting them to the dist directory. You can specify what file name you would like by changing the `styles/main.css` part of the opening build tag, and specify multiple build tags. The same may be done with javascript files, in a similar form:
+`<!-- build:js scripts/main.js -->
+<script type="text/javascript" src="scripts/index.js"></script>
+<script type="text/javascript" src="scripts/morejavascript.js"></script>
+<!-- endbuild -->`
+
+### Version Number
+The version number is a pseudorandom string, and is not used for actual versioning, it simply makes getting around browser caching a bit easier.
 
 
-
-Basic template for beginning web dev. Run npm install -g gulp and npm install to set up.
+## Basic use flow
+Simply use the `gulp watch` command and begin working within the dev directory. A browser window will open and refresh as you save changes to your files. As always, use `Ctrl + C` to halt the current job.
