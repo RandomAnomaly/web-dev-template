@@ -31,15 +31,19 @@ Command | What does it do?
 
 ### Build Tags
 In your html files, if you put your css link tags in between `build:css` comment tags like this:
-`<!-- build:css styles/main.css -->
+```html
+<!-- build:css styles/main.css -->
 <link rel="stylesheet" href="styles/styles.css">
 <link rel="stylesheet" href="styles/styles2.css">
-<!-- endbuild -->`
+<!-- endbuild -->
+```
 The pipeline will uglify, combine and attach a pseudorandom version number to the files when outputting them to the dist directory. You can specify what file name you would like by changing the `styles/main.css` part of the opening build tag, and specify multiple build tags. The same may be done with javascript files, in a similar form:
-`<!-- build:js scripts/main.js -->
+```html
+<!-- build:js scripts/main.js -->
 <script type="text/javascript" src="scripts/index.js"></script>
 <script type="text/javascript" src="scripts/morejavascript.js"></script>
-<!-- endbuild -->`
+<!-- endbuild -->
+```
 
 ### Version Number
 The version number is a pseudorandom string, and is not used for actual versioning, it simply makes getting around browser caching a bit easier.
